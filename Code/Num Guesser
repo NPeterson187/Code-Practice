@@ -1,0 +1,14 @@
+import math
+import random
+rannum = random.randint(1,100)
+status = 0
+guess = ""
+while status == 0:
+  guess = input("Guess between 1 and 100: ")
+  if int(guess) == rannum:
+    print ("You guessed correctly")
+    status = 1
+  elif int(guess) < rannum:
+    print ("You guessed to low")
+  else:
+    print ("You guessed to high")

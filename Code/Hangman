@@ -1,0 +1,58 @@
+import string
+import random
+# Hangman Made by: Nathan peterson
+# Varibles
+words = [ "python","hangman","challenge","programming","developer","keyboard","variable",
+          "function","condition","looping","debugging","interface","compile","recursion",
+          "exception","syntax","algorithm","argument","boolean","iterator","goalie",
+          "ejection", "possession", "shotclock", "swimoff", "splash", "cap", "goal",
+          "pass", "defense", "offense", "foul", "kickout", "pool", "whistle", "assist",
+          "dribble", "hole", "rebound", "center"]
+guesses = []
+output = "_"
+attempts = 6
+def checkwin():
+  global output
+  if attempts == 0:
+    print("You ran out of attempts")
+    return(True)
+  elif "_" in output:
+    return(False)
+  else:
+      print(f"You did it, you correctly guessed {word}")
+      return(True)
+def newWord():
+  return(words[random.randint(0,len(words)-1)])
+word = newWord()
+print("Welcome to Hangmand!\n--------------------------\n")
+def guessLetter():
+  global output
+  global guesses
+  global attempts
+  output = ""
+  guess = input("Guess a letter: ").strip().lower()
+  if word == guess:
+    return(f"You guessed corectly, the word was {word} good job!")
+  if guess in guesses:
+    print("\nAlready guessed the letter\n")
+    guess = ""
+  elif len(guess) > 1:
+    print("Guess one letter")
+    guess = ""
+  if guess in list(string.ascii_lowercase):
+    guesses.append(guess)
+  for char in word:
+    if char in guesses:
+      output += f"{char} "
+    else:
+      output += "_ "
+  if guess in list(output):
+    print("You guessed correctly")
+  else:
+    attempts -= 1
+    print(f"You guesed incorrectly\nYou have {attempts} attempts left.")
+    print(f"\nYou have guessed the letters: {guesses}")
+  return(f"\n{output}\n")
+
+while checkwin() is False:
+  print(guessLetter())

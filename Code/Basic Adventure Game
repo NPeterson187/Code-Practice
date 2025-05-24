@@ -1,0 +1,50 @@
+# Variables
+inventory = ["Dagger","Money pouch"]
+health = 5
+money = 10
+wake = 0
+# Sequentail code
+input("You wake up in a mysterious room. \n(continue?): ")
+
+# Functions
+def start():
+  if input("Do you wish to look around? ").strip().lower() in ["yes", "y"]:
+    if input("You look around and see 2 paths. One leads to a door and the other to a small forest. \nWhere would you like to go? ").strip().lower() == "forest":
+      forest()
+    else:
+      door()
+  if input("Would you like to go to the Door or the Forest? ").strip().lower() == "forest":
+    forest()
+  else:
+    door()
+def forest():
+  if input("You enter the forest and see foresty things. Do you with to look around? ") in ["yes","y"]:
+    print("You find a Key!")
+    inventory.append("Key")
+    if input("Do you wish to leave? ").strip().lower() in ["yes", "y"]:
+      start()
+  elif input("Go back? ").strip().lower() in ["yes", "y"]:
+    wake = start(wake)
+  else:
+    forest()
+  forest()
+def door():
+  if "Key" in inventory:
+    print("The door unlocks, and you walk in.")
+    final()
+  else:
+    print("You go to the door, and it looks like there is a lock on it. Where is the key?")
+    if input("Go back? ").strip().lower() in ["yes", "y"]:
+      start()
+def final():
+  if input("You see a big slime, it hasn't seen you yet. \nWhat would you like to do? (attack or talk)") == "attack":
+    print(f"You look in your inventory. ({inventory})")
+    if input("What would you like to use?") in inventory:
+      print("Slimes are weak, when you hit it, it dies")
+    else:
+      print("Not in inventory")
+      final()
+  else:
+    print("The slime lunges at you as you walk up to it, it dies when it touches you (Its a really weak slime).")
+  print("You see a door and go through it. You made it out. \nYou Win!")
+start()

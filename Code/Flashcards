@@ -1,0 +1,24 @@
+flashcards = {
+    "What is the capital of France?": "Paris",
+    "What is 5 + 7?": "12",
+    "What is the largest planet in our solar system?": "Jupiter",
+    "Who wrote 'Romeo and Juliet'?": "Shakespeare",
+    "What is the boiling point of water in Celsius?": "100",
+    "What is the capital of Japan?": "Tokyo",
+    "What is the square root of 81?": "9",
+    "What is the chemical symbol for gold?": "Au",
+    "In what year did the Titanic sink?": "1912",
+    "What is the fastest land animal?": "Cheetah"
+}
+i = 0
+question = ""
+anwser = ""
+
+for question, anwser in flashcards.items():
+  print(question)
+  if input("Awnser: ") == anwser:
+    print("Correct!")
+    i = i + 1
+  else:
+    print(f"Incorrect. \nthe anwser is {anwser}.")
+print(f"You finished with a {i}/10!")

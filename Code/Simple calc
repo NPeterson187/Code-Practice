@@ -1,0 +1,25 @@
+num1 = 0
+num2 = 0
+out = 0
+sign = ""
+i = 0
+while i == 0:
+  num1 = input("Whats the first number: ")
+  num1 = int(num1)
+  sign = input("What operation do you want (+,-,*,/): ")
+  num2 = input("Whats the second number: ")
+  num2 = int(num2)
+  if sign == "+":
+    out = num1 + num2
+  elif sign == "-":
+    out = num1 - num2
+  elif sign == "*":
+    out = num1 * num2
+  elif sign == "/":
+    out = num1 / num2
+  else:
+    out = "Enter real operator"
+  i = 1
+  print (out)
+  if input("Do you want to calculate another set of numbers?: ") == "Yes" or "yes" or "y":
+   i = 1
